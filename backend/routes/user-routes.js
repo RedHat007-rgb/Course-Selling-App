@@ -1,27 +1,18 @@
-const express=require("express");
-const Router=express.Router();
+const express = require("express");
+const Router = express.Router();
+const { user_login } = require("../Middlewares/user-login");
+const {
+  signup,
+  login,
+  purchased_course,
+} = require("../controllers/user-controller");
 
-Router.get("/login",(req,res)=>{
-    res.send("In login endpoint");
-})
+Router.post("/signup", signup);
 
+Router.use(user_login);
 
-Router.post("/signup",(req,res)=>{
-    res.send("In Signup endpoint");
-})
+Router.get("/login", login);
 
-Router.post("/purchase-course",(req,res)=>{
-    res.send("IN purchse course endpoint")
-})
+Router.get("/purchased-courses", purchased_course);
 
-Router.get("/all-course",(req,res)=>{
-    res.send("in all-course")
-})
-
-
-Router.get("/purchased-courses",(req,res)=>{
-    res.send("purchased courses")
-})
-
-
-module.exports=Router;
+module.exports = Router;
