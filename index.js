@@ -8,6 +8,8 @@ const user_router = require("./backend/routes/user-routes");
 const course_router = require("./backend/routes/course-routes");
 const dbconnect = require("./backend/db/db");
 
+app.use(express.json());
+
 app.use("/api/v1/admin", admin_router);
 
 app.use("/api/v1/user", user_router);
